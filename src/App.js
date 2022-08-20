@@ -1,23 +1,19 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { useState } from 'react';
+import EntryPage from './Components/EntryPage';
+import QuizPage from './Components/QuizPage';
 
 function App() {
+  const [start, setStart] = useState(false);
+   const startHandling = () =>{
+    setStart(true);
+   }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {!start ? 
+      <EntryPage startHandling={startHandling}/> 
+      : <QuizPage />}
     </div>
   );
 }
